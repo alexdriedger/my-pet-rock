@@ -9,6 +9,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,12 +20,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_main);
 
-        ImageView muscleButton = (ImageView) findViewById(R.id.muscle_button);
+        final ImageView mainImage = (ImageView) findViewById(R.id.main_image);
+        final ImageView bActionWorkout = (ImageView) findViewById(R.id.muscle_button);
+        final ImageView bActionEat = (ImageView) findViewById(R.id.food_button);
+        final ImageView bActionMain = (ImageView) findViewById(R.id.main_button);
 
-        muscleButton.setOnClickListener(new View.OnClickListener() {
+        Glide.with(this).load(R.drawable.rock_basic).into(mainImage);
+
+        bActionWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "MUSCLES", Toast.LENGTH_LONG).show();
+                Glide.with(getApplicationContext()).load(R.drawable.stage1_rock_img).into(mainImage);
+            }
+        });
+
+        bActionEat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Glide.with(getApplicationContext()).load(R.drawable.background_basic).into(mainImage);
+            }
+        });
+
+        bActionMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Glide.with(getApplicationContext()).load(R.drawable.rock_basic).into(mainImage);
             }
         });
     }
