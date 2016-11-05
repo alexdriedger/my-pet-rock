@@ -25,26 +25,26 @@ public class MainActivity extends AppCompatActivity {
         final ImageView bActionEat = (ImageView) findViewById(R.id.food_button);
         final ImageView bActionMain = (ImageView) findViewById(R.id.main_button);
 
-        Glide.with(this).load(R.drawable.rock_basic).into(mainImage);
+        Glide.with(mainImage.getContext()).load(R.drawable.rock_basic).into(mainImage);
 
         bActionWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Glide.with(getApplicationContext()).load(R.drawable.stage1_rock_img).into(mainImage);
+                Glide.with(mainImage.getContext()).load(R.drawable.stage1_rock_img).into(mainImage);
             }
         });
 
         bActionEat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Glide.with(getApplicationContext()).load(R.drawable.background_basic).into(mainImage);
+                Glide.with(mainImage.getContext()).load(R.drawable.background_basic).into(mainImage);
             }
         });
 
         bActionMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Glide.with(getApplicationContext()).load(R.drawable.rock_basic).into(mainImage);
+                Glide.with(mainImage.getContext()).load(R.drawable.rock_basic).into(mainImage);
             }
         });
     }
