@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
         final ImageView mainImage = (ImageView) findViewById(R.id.main_image);
         final ImageView bActionWorkout = (ImageView) findViewById(R.id.muscle_button);
         final ImageView bActionEat = (ImageView) findViewById(R.id.food_button);
-        final ImageView bActionMain = (ImageView) findViewById(R.id.main_button);
+        final ImageView bActionToothBrush = (ImageView) findViewById(R.id.toothbrush_button);
+        final ImageView bActionQuote = (ImageView) findViewById(R.id.quote_button);
 
         Glide.with(mainImage.getContext()).load(R.drawable.rock_basic).into(mainImage);
 
@@ -41,9 +42,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        bActionMain.setOnClickListener(new View.OnClickListener() {
+        bActionToothBrush.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Glide.with(mainImage.getContext()).load(R.drawable.rock_basic).into(mainImage);
+            }
+        });
+
+
+        bActionQuote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Quotes", Toast.LENGTH_LONG).show();
                 Glide.with(mainImage.getContext()).load(R.drawable.rock_basic).into(mainImage);
             }
         });
