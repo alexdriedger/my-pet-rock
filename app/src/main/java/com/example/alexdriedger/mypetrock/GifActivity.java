@@ -27,7 +27,7 @@ public class GifActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_gif);
 
-        Bundle extras = getIntent().getExtras();
+        final Bundle extras = getIntent().getExtras();
         final String gifResource = extras.getString("GIF_TO_PLAY");
         int gifLength = extras.getInt("GIF_LENGTH");
 
@@ -59,6 +59,19 @@ public class GifActivity extends AppCompatActivity {
             public void onFinish() {
                 parentView.removeView(gifView);
                 Intent backToMain = new Intent(GifActivity.this, MainActivity.class);
+
+                if(extras.size() == 2) {
+                    backToMain.putExtra("hasCreatine", false);
+                    backToMain.putExtra("muscleCount", 1);
+                    backToMain.putExtra("moneyCount", 1);
+                    backToMain.putExtra("smileCount", 1);
+                } else {
+                    backToMain.putExtra("hasCreatine", extras.getBoolean("hasCreatine"));
+                    backToMain.putExtra("muscleCount", extras.getInt("muscleCount"));
+                    backToMain.putExtra("moneyCount", extras.getInt("moneyCount"));
+                    backToMain.putExtra("smileCount", extras.getInt("smileCount"));
+                }
+
                 startActivity(backToMain);
             }
         }.start();
