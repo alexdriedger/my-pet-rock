@@ -29,6 +29,7 @@ public class GifActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         final String gifResource = extras.getString("GIF_TO_PLAY");
+        int gifLength = extras.getInt("GIF_LENGTH");
 
         Resources r = getResources();
         final int gifID = r.getIdentifier(gifResource, "raw", "com.example.alexdriedger.mypetrock");
@@ -49,7 +50,7 @@ public class GifActivity extends AppCompatActivity {
 
         parentView.addView(gifView);
 
-        new CountDownTimer(4000, 600) {
+        new CountDownTimer(gifLength, 600) {
 
             public void onTick(long millisUntilFinished) {
                 // Do Nothing

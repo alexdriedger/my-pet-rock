@@ -46,6 +46,7 @@ public class LaunchActivity extends AppCompatActivity {
                 else {
                     Intent gifIntent = new Intent(LaunchActivity.this, GifActivity.class);
                     gifIntent.putExtra("GIF_TO_PLAY", "rock_cracking_gif_small");
+                    gifIntent.putExtra("GIF_LENGTH", 10000);
                     startActivity(gifIntent);
                 }
             }
