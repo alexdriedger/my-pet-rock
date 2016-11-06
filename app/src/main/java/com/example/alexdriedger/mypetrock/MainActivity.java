@@ -22,7 +22,7 @@ import static com.bumptech.glide.Glide.with;
 public class MainActivity extends AppCompatActivity {
 
     public int muscleCount = 1;
-    public int smileCount = 1;
+    public int smileCount = 0;
     public int moneyCount = 1;
     public boolean hasCreatine = false;
 
@@ -31,50 +31,39 @@ public class MainActivity extends AppCompatActivity {
 
     public void render() {
         final ImageView mainImage = (ImageView) findViewById(R.id.main_image);
-        int state = muscleCount * 100;
-        switch (state) {
-            case 000:
-            case 001:
-                Glide.with(mainImage.getContext())
-                        .load(R.drawable.state_000)
-                        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                        .crossFade(100)
-                        .into(mainImage);
-                break;
-            case 010:
-            case 011:
-            case 111:
-                Glide.with(mainImage.getContext())
-                        .load(R.drawable.state_111)
-                        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                        .crossFade(100)
-                        .into(mainImage);
-                break;
-            case 002:
-            case 100:
-            case 101:
-            case 104:
-            case 103:
-                Glide.with(mainImage.getContext())
-                        .load(R.drawable.state_103)
-                        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                        .crossFade(100)
-                        .into(mainImage);
-                break;
-            case 200:
-                Glide.with(mainImage.getContext())
-                        .load(R.drawable.state_200)
-                        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                        .crossFade(100)
-                        .into(mainImage);
-                break;
-            case 300:
-                Glide.with(mainImage.getContext())
-                        .load(R.drawable.state_400)
-                        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                        .crossFade(100)
-                        .into(mainImage);
-                break;
+        int state = muscleCount * 100 + smileCount*10;
+
+        if(state < 99) {
+            Glide.with(mainImage.getContext())
+                    .load(R.drawable.state_000)
+                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                    .crossFade(100)
+                    .into(mainImage);
+        } else if(state >= 100 && state <= 104) {
+            Glide.with(mainImage.getContext())
+                    .load(R.drawable.state_103)
+                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                    .crossFade(100)
+                    .into(mainImage);
+        } else if(state >= 110 && state < 200) {
+            Glide.with(mainImage.getContext())
+                    .load(R.drawable.state_111)
+                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                    .crossFade(100)
+                    .into(mainImage);
+        } else if(state >= 200 && state < 300) {
+
+            Glide.with(mainImage.getContext())
+                    .load(R.drawable.state_200)
+                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                    .crossFade(100)
+                    .into(mainImage);
+        } else if(state >= 300) {
+            Glide.with(mainImage.getContext())
+                    .load(R.drawable.state_400)
+                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                    .crossFade(100)
+                    .into(mainImage);
         }
     }
 
@@ -115,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         bActionWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (hasCreatine && muscleCount != MAX_COUNT) {
+                if (muscleCount != MAX_COUNT) {
                     hasCreatine = false;
                     muscleCount++;
 
@@ -129,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                     gifIntent.putExtra("smileCount", smileCount);
                     startActivity(gifIntent);
                 }
-                else if (hasCreatine && muscleCount == MAX_COUNT) {
+                else if (muscleCount == MAX_COUNT) {
                     // Start Gif Activity
                     Intent gifIntent = new Intent(MainActivity.this, GifActivity.class);
                     gifIntent.putExtra("GIF_TO_PLAY", "animation_finalstage");
@@ -146,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         bActionEat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!hasCreatine && moneyCount != 0) {
+                if(moneyCount != 0) {
                     hasCreatine = true;
                     moneyCount--;
 

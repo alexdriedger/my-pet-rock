@@ -64,7 +64,7 @@ public class GifActivity extends AppCompatActivity {
                     backToMain.putExtra("hasCreatine", false);
                     backToMain.putExtra("muscleCount", 1);
                     backToMain.putExtra("moneyCount", 1);
-                    backToMain.putExtra("smileCount", 1);
+                    backToMain.putExtra("smileCount", 0);
                 } else {
                     backToMain.putExtra("hasCreatine", extras.getBoolean("hasCreatine"));
                     backToMain.putExtra("muscleCount", extras.getInt("muscleCount"));
