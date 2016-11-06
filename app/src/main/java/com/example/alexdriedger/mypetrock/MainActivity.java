@@ -1,6 +1,7 @@
 package com.example.alexdriedger.mypetrock;
 
 import android.content.Context;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 import static com.bumptech.glide.Glide.with;
@@ -31,29 +33,72 @@ public class MainActivity extends AppCompatActivity {
         switch (state) {
             case 000:
             case 001:
-                Glide.with(mainImage.getContext()).load(R.drawable.state_000).into(mainImage);
+                Glide.with(mainImage.getContext())
+                        .load(R.drawable.state_000)
+                        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                        .crossFade(100)
+                        .into(mainImage);
                 break;
             case 010:
             case 011:
-                Glide.with(mainImage.getContext()).load(R.drawable.state_111).into(mainImage);
+                Glide.with(mainImage.getContext())
+                        .load(R.drawable.state_111)
+                        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                        .crossFade(100)
+                        .into(mainImage);
                 break;
             case 002:
             case 100:
             case 101:
             case 104:
             case 103:
-                Glide.with(mainImage.getContext()).load(R.drawable.state_103).into(mainImage);
+                Glide.with(mainImage.getContext())
+                        .load(R.drawable.state_103)
+                        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                        .crossFade(100)
+                        .into(mainImage);
                 break;
             case 200:
-                Glide.with(mainImage.getContext()).load(R.drawable.state_200).into(mainImage);
+                Glide.with(mainImage.getContext())
+                        .load(R.drawable.state_200)
+                        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                        .crossFade(100)
+                        .into(mainImage);
                 break;
             case 300:
-                Glide.with(mainImage.getContext()).load(R.drawable.state_310).into(mainImage);
+                Glide.with(mainImage.getContext())
+                        .load(R.drawable.state_310)
+                        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                        .crossFade(100)
+                        .into(mainImage);
                 break;
             case 400:
-                Glide.with(mainImage.getContext()).load(R.drawable.state_400).into(mainImage);
+                Glide.with(mainImage.getContext())
+                        .load(R.drawable.state_400)
+                        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                        .crossFade(100)
+                        .into(mainImage);
                 break;
         }
+    }
+
+    public void startCountdown() {
+
+        new CountDownTimer(30000, 10000) {
+            @Override
+            public void onTick(long l) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                if(muscleCount!= 0) {
+                    muscleCount--;
+                    render();
+                }
+                startCountdown();
+            }
+        }.start();
     }
 
     @Override
@@ -71,13 +116,15 @@ public class MainActivity extends AppCompatActivity {
 //        bActionWorkout.setVisibility(View.INVISIBLE);
 
 
-        Glide.with(mainImage.getContext()).load(R.drawable.state_000).into(mainImage);
+        Glide.with(mainImage.getContext()).load(R.drawable.state_111).into(mainImage);
         Glide.with(mainImage.getContext()).load(R.drawable.background_basic).into(mainBackground);
         // Load Icons
         Glide.with(mainImage.getContext()).load(R.drawable.nav_dumbbell_icon_yellow).into(bActionWorkout);
         Glide.with(mainImage.getContext()).load(R.drawable.nav_protein_icon_yellow).into(bActionEat);
         Glide.with(mainImage.getContext()).load(R.drawable.nav_toothbrush_icon_yellow).into(bActionToothBrush);
         Glide.with(mainImage.getContext()).load(R.drawable.nav_quote_icon_yellow).into(bActionQuote);
+
+        startCountdown();
 
         bActionWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
