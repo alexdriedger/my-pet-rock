@@ -120,13 +120,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if (muscleCount == MAX_COUNT) {
                     // Start Gif Activity
-                    Intent gifIntent = new Intent(MainActivity.this, GifActivity.class);
-                    gifIntent.putExtra("GIF_TO_PLAY", "animation_finalstage");
-                    gifIntent.putExtra("GIF_LENGTH", 400000);
-                    gifIntent.putExtra("hasCreatine", hasCreatine);
-                    gifIntent.putExtra("muscleCount", muscleCount);
-                    gifIntent.putExtra("moneyCount", moneyCount);
-                    gifIntent.putExtra("smileCount", smileCount);
+                    Intent gifIntent = new Intent(MainActivity.this, GifFinalActivity.class);
                     startActivity(gifIntent);
                 }
             }
