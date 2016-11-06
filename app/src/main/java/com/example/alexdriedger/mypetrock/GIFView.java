@@ -9,7 +9,7 @@ import android.view.View;
 
 import java.io.InputStream;
 
-public class GIFView extends View {
+public abstract class GIFView extends View {
     public Movie mMovie;
     public long movieStart;
 
@@ -28,10 +28,10 @@ public class GIFView extends View {
         initializeView();
     }
 
-    private void initializeView() {
-        //R.drawable.loader - our animated GIF
-        InputStream is = getContext().getResources().openRawResource(R.raw.test1_gif);
-        mMovie = Movie.decodeStream(is);
+    public void initializeView() {
+//        //R.drawable.loader - our animated GIF
+//        InputStream is = getContext().getResources().openRawResource(R.raw.test1_gif);
+//        mMovie = Movie.decodeStream(is);
     }
 
     @Override
