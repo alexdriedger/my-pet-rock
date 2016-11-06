@@ -19,6 +19,8 @@
         <activity android:name=".GifActivity"
             android:hardwareAccelerated="false">
         </activity>
+        <activity android:name=".GifFinalActivity"
+            android:hardwareAccelerated="false"/>
     </application>
 
 </manifest>
