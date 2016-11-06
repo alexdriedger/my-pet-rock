@@ -22,7 +22,40 @@ public class MainActivity extends AppCompatActivity {
     public int moneyCount = 0;
     public boolean hasCreatine = false;
 
-    private int MAX_COUNT = 3;
+    private int MAX_COUNT = 5;
+
+
+    public void render() {
+        final ImageView mainImage = (ImageView) findViewById(R.id.main_image);
+        int state = muscleCount * 100 + smileCount * 10 + moneyCount;
+        switch (state) {
+            case 000:
+            case 001:
+                Glide.with(mainImage.getContext()).load(R.drawable.state_000).into(mainImage);
+                break;
+            case 010:
+            case 110:
+            case 111:
+                Glide.with(mainImage.getContext()).load(R.drawable.state_111).into(mainImage);
+                break;
+            case 002:
+            case 100:
+            case 101:
+            case 104:
+            case 103:
+                Glide.with(mainImage.getContext()).load(R.drawable.state_103).into(mainImage);
+                break;
+            case 200:
+                Glide.with(mainImage.getContext()).load(R.drawable.state_200).into(mainImage);
+                break;
+            case 300:
+                Glide.with(mainImage.getContext()).load(R.drawable.state_310).into(mainImage);
+                break;
+            case 400:
+                Glide.with(mainImage.getContext()).load(R.drawable.state_400).into(mainImage);
+                break;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         final ImageView bActionToothBrush = (ImageView) findViewById(R.id.toothbrush_button);
         final ImageView bActionQuote = (ImageView) findViewById(R.id.quote_button);
 
-        bActionWorkout.setVisibility(View.INVISIBLE);
+//        bActionWorkout.setVisibility(View.INVISIBLE);
 
 
         Glide.with(mainImage.getContext()).load(R.drawable.stage1_rock_img).into(mainImage);
@@ -45,11 +78,14 @@ public class MainActivity extends AppCompatActivity {
         bActionWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(hasCreatine && muscleCount != MAX_COUNT) {
+                if (hasCreatine && muscleCount != MAX_COUNT) {
                     hasCreatine = false;
                     muscleCount++;
-                    bActionWorkout.setVisibility(View.INVISIBLE);
+                    //bActionWorkout.setVisibility(View.INVISIBLE);
                     Toast.makeText(getApplicationContext(), "ROCK WORKOUT, NOW LEVEL: " + muscleCount, Toast.LENGTH_SHORT).show();
+                    render();
+                } else if(!hasCreatine) {
+                    Toast.makeText(getApplicationContext(), "ROCK NEED CREATINE TO WORKOUT", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(), "ROCK ALREADY TOO STRONG, TAKE BREAK", Toast.LENGTH_SHORT).show();
                 }
@@ -62,8 +98,9 @@ public class MainActivity extends AppCompatActivity {
                 if(!hasCreatine && moneyCount != 0) {
                     hasCreatine = true;
                     moneyCount--;
-                    bActionWorkout.setVisibility(View.VISIBLE);
+                    //bActionWorkout.setVisibility(View.VISIBLE);
                     Toast.makeText(getApplicationContext(), "ROCK EAT FOOD", Toast.LENGTH_SHORT).show();
+                    render();
                 } else if(moneyCount == 0) {
                     Toast.makeText(getApplicationContext(), "ROCK NEED MONEY", Toast.LENGTH_SHORT).show();
                 } else {
@@ -78,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 if(smileCount != MAX_COUNT) {
                     smileCount++;
                     Toast.makeText(getApplicationContext(), "ROCK SMILE ROCK HAVE: " + smileCount, Toast.LENGTH_SHORT).show();
+                    render();
                 } else {
                     Toast.makeText(getApplicationContext(), "ROCK SMILE TOO MUCH, TAKE BREAK", Toast.LENGTH_SHORT).show();
                 }
@@ -92,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                     moneyCount++;
                     smileCount--;
                     Toast.makeText(getApplicationContext(), "ROCK SAY NICE THINGS, ROCK HAVE: $" + moneyCount, Toast.LENGTH_SHORT).show();
+                    render();
                 } else if(smileCount == 0) {
                     Toast.makeText(getApplicationContext(), "ROCK NOT PRETTY ENOUGH, NEED BRUSH TEETH", Toast.LENGTH_SHORT).show();
                 } else {
@@ -99,9 +138,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    public void render() {
-
     }
 }
