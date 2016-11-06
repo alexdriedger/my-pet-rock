@@ -34,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 Glide.with(mainImage.getContext()).load(R.drawable.state_000).into(mainImage);
                 break;
             case 010:
-            case 110:
-            case 111:
+            case 011:
                 Glide.with(mainImage.getContext()).load(R.drawable.state_111).into(mainImage);
                 break;
             case 002:
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 //        bActionWorkout.setVisibility(View.INVISIBLE);
 
 
-        Glide.with(mainImage.getContext()).load(R.drawable.stage1_rock_img).into(mainImage);
+        Glide.with(mainImage.getContext()).load(R.drawable.state_000).into(mainImage);
         Glide.with(mainImage.getContext()).load(R.drawable.background_basic).into(mainBackground);
 
         bActionWorkout.setOnClickListener(new View.OnClickListener() {

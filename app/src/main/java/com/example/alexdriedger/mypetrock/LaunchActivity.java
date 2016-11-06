@@ -26,9 +26,13 @@ public class LaunchActivity extends AppCompatActivity {
         this.setContentView(R.layout.activity_launch);
         mRockClicks = 0;
 
-        ImageView imageView = (ImageView) findViewById(R.id.launch_image_view);
+        ImageView mainImage = (ImageView) findViewById(R.id.launch_image_view);
+        ImageView backgroundImage = (ImageView) findViewById(R.id.launch_background);
 
-        imageView.setOnClickListener(new View.OnClickListener() {
+        Glide.with(this).load(R.drawable.background_basic).into(backgroundImage);
+        Glide.with(this).load(R.drawable.stage1_rock_img).into(mainImage);
+
+        mainImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mRockClicks < 2) {

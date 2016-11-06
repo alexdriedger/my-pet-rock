@@ -4,14 +4,15 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/launch_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/background_basic"/>
+        android:scaleType="centerCrop"/>
 
     <ImageView
         android:id="@+id/launch_image_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/state1_rock"/>
+        android:scaleType="centerInside"/>
 
 </RelativeLayout>
