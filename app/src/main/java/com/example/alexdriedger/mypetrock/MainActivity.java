@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     public int moneyCount = 1;
     public boolean hasCreatine = false;
 
-    private int MAX_COUNT = 5;
+    private int MAX_COUNT = 3;
 
 
     public void render() {
@@ -78,24 +78,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void startCountdown() {
-
-        new CountDownTimer(30000, 10000) {
-            @Override
-            public void onTick(long l) {
-
-            }
-
-            @Override
-            public void onFinish() {
-                if(muscleCount!= 0) {
-                    muscleCount--;
-                    render();
-                    startCountdown();
-                }
-            }
-        }.start();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,9 +111,6 @@ public class MainActivity extends AppCompatActivity {
 
         render();
 
-        if(muscleCount != 0) {
-            startCountdown();
-        }
 
         bActionWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,6 +129,17 @@ public class MainActivity extends AppCompatActivity {
                     gifIntent.putExtra("smileCount", smileCount);
                     startActivity(gifIntent);
                 }
+                else if (hasCreatine && muscleCount == MAX_COUNT) {
+                    // Start Gif Activity
+                    Intent gifIntent = new Intent(MainActivity.this, GifActivity.class);
+                    gifIntent.putExtra("GIF_TO_PLAY", "animation_finalstage");
+                    gifIntent.putExtra("GIF_LENGTH", 400000);
+                    gifIntent.putExtra("hasCreatine", hasCreatine);
+                    gifIntent.putExtra("muscleCount", muscleCount);
+                    gifIntent.putExtra("moneyCount", moneyCount);
+                    gifIntent.putExtra("smileCount", smileCount);
+                    startActivity(gifIntent);
+                }
             }
         });
 
@@ -162,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
                     // Start Gif Activity
                     Intent gifIntent = new Intent(MainActivity.this, GifActivity.class);
-                    gifIntent.putExtra("GIF_TO_PLAY", "animation_lifting");
+                    gifIntent.putExtra("GIF_TO_PLAY", "animation_drinking");
                     gifIntent.putExtra("GIF_LENGTH", 4000);
                     gifIntent.putExtra("hasCreatine", hasCreatine);
                     gifIntent.putExtra("muscleCount", muscleCount);

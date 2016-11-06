@@ -68,7 +68,7 @@ public class LaunchActivity extends AppCompatActivity {
         ImageView waterCanImage = (ImageView) findViewById(R.id.water_can_image);
 
         Glide.with(this).load(R.drawable.background_basic).into(backgroundImage);
-        Glide.with(this).load(R.drawable.stage1_rock_img).into(mainImage);
+        Glide.with(this).load(R.drawable.state_opening_rock).into(mainImage);
         Glide.with(this).load(R.drawable.nav_water_icon).into(waterCanImage);
 
         // AudioManager to handle playing audio
