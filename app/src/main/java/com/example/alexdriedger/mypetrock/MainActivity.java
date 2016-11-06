@@ -20,9 +20,9 @@ import static com.bumptech.glide.Glide.with;
 
 public class MainActivity extends AppCompatActivity {
 
-    public int muscleCount = 0;
-    public int smileCount = 0;
-    public int moneyCount = 0;
+    public int muscleCount = 1;
+    public int smileCount = 1;
+    public int moneyCount = 1;
     public boolean hasCreatine = false;
 
     private int MAX_COUNT = 5;
@@ -96,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
                 if(muscleCount!= 0) {
                     muscleCount--;
                     render();
+                    startCountdown();
                 }
-                startCountdown();
             }
         }.start();
     }
@@ -133,8 +133,6 @@ public class MainActivity extends AppCompatActivity {
                 if (hasCreatine && muscleCount != MAX_COUNT) {
                     hasCreatine = false;
                     muscleCount++;
-                    //bActionWorkout.setVisibility(View.INVISIBLE);
-                    //Toast.makeText(getApplicationContext(), "ROCK WORKOUT, NOW LEVEL: " + muscleCount, Toast.LENGTH_SHORT).show();
 
                     // Start Gif Activity
                     Intent gifIntent = new Intent(MainActivity.this, GifActivity.class);
@@ -143,10 +141,9 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(gifIntent);
 
                     render();
-                } else if(!hasCreatine) {
-                    Toast.makeText(getApplicationContext(), "ROCK NEED CREATINE TO WORKOUT", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "ROCK ALREADY TOO STRONG, TAKE BREAK", Toast.LENGTH_SHORT).show();
+                    if(muscleCount == 1) {
+                        startCountdown();
+                    }
                 }
             }
         });
@@ -157,8 +154,6 @@ public class MainActivity extends AppCompatActivity {
                 if(!hasCreatine && moneyCount != 0) {
                     hasCreatine = true;
                     moneyCount--;
-                    //bActionWorkout.setVisibility(View.VISIBLE);
-                    //Toast.makeText(getApplicationContext(), "ROCK EAT FOOD", Toast.LENGTH_SHORT).show();
 
                     // Start Gif Activity
                     Intent gifIntent = new Intent(MainActivity.this, GifActivity.class);
@@ -167,10 +162,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(gifIntent);
 
                     render();
-                } else if(moneyCount == 0) {
-                    Toast.makeText(getApplicationContext(), "ROCK NEED MONEY", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "ROCK ALREADY FULL", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -180,7 +171,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(smileCount != MAX_COUNT) {
                     smileCount++;
-                    //Toast.makeText(getApplicationContext(), "ROCK SMILE ROCK HAVE: " + smileCount, Toast.LENGTH_SHORT).show();
 
                     // Start Gif Activity
                     Intent gifIntent = new Intent(MainActivity.this, GifActivity.class);
@@ -189,8 +179,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(gifIntent);
 
                     render();
-                } else {
-                    Toast.makeText(getApplicationContext(), "ROCK SMILE TOO MUCH, TAKE BREAK", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -202,7 +190,6 @@ public class MainActivity extends AppCompatActivity {
                 if (moneyCount != MAX_COUNT && smileCount != 0) {
                     moneyCount++;
                     smileCount--;
-                    //Toast.makeText(getApplicationContext(), "ROCK SAY NICE THINGS, ROCK HAVE: $" + moneyCount, Toast.LENGTH_SHORT).show();
 
                     // Start Gif Activity
                     Intent gifIntent = new Intent(MainActivity.this, GifActivity.class);
@@ -211,10 +198,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(gifIntent);
 
                     render();
-                } else if(smileCount == 0) {
-                    Toast.makeText(getApplicationContext(), "ROCK NOT PRETTY ENOUGH, NEED BRUSH TEETH", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "ROCK MUCH BLING BLING, TAKE BREAK", Toast.LENGTH_SHORT).show();
                 }
             }
         });
