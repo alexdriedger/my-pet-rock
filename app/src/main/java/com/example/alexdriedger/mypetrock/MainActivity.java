@@ -21,17 +21,19 @@ public class MainActivity extends AppCompatActivity {
         this.setContentView(R.layout.activity_main);
 
         final ImageView mainImage = (ImageView) findViewById(R.id.main_image);
+        final ImageView mainBackground = (ImageView) findViewById(R.id.main_background);
         final ImageView bActionWorkout = (ImageView) findViewById(R.id.muscle_button);
         final ImageView bActionEat = (ImageView) findViewById(R.id.food_button);
         final ImageView bActionToothBrush = (ImageView) findViewById(R.id.toothbrush_button);
         final ImageView bActionQuote = (ImageView) findViewById(R.id.quote_button);
 
-        Glide.with(mainImage.getContext()).load(R.drawable.rock_basic).into(mainImage);
+        Glide.with(mainImage.getContext()).load(R.drawable.stage1_rock_img).into(mainImage);
+        Glide.with(mainImage.getContext()).load(R.drawable.background_basic).into(mainBackground);
 
         bActionWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Glide.with(mainImage.getContext()).load(R.drawable.stage1_rock_img).into(mainImage);
+                Glide.with(mainImage.getContext()).load(R.drawable.state1_rock).into(mainImage);
             }
         });
 
