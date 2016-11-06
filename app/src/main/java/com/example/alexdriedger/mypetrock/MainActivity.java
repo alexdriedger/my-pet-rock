@@ -73,6 +73,11 @@ public class MainActivity extends AppCompatActivity {
 
         Glide.with(mainImage.getContext()).load(R.drawable.state_000).into(mainImage);
         Glide.with(mainImage.getContext()).load(R.drawable.background_basic).into(mainBackground);
+        // Load Icons
+        Glide.with(mainImage.getContext()).load(R.drawable.nav_dumbbell_icon_yellow).into(bActionWorkout);
+        Glide.with(mainImage.getContext()).load(R.drawable.nav_protein_icon_yellow).into(bActionEat);
+        Glide.with(mainImage.getContext()).load(R.drawable.nav_toothbrush_icon_yellow).into(bActionToothBrush);
+        Glide.with(mainImage.getContext()).load(R.drawable.nav_quote_icon_yellow).into(bActionQuote);
 
         bActionWorkout.setOnClickListener(new View.OnClickListener() {
             @Override

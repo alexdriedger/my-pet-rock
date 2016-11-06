@@ -15,4 +15,20 @@
         android:layout_height="match_parent"
         android:scaleType="centerInside"/>
 
+    <RelativeLayout
+        android:id="@+id/water_can_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#3d3d3d">
+
+        <ImageView
+            android:id="@+id/water_can_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="@dimen/button_padding"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
 </RelativeLayout>

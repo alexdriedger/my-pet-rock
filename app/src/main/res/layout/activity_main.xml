@@ -30,7 +30,6 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:padding="@dimen/button_padding"
-            android:src="@drawable/nav_dumbbell_icon"
             android:layout_weight="1"/>
 
         <ImageView
@@ -38,7 +37,6 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:padding="@dimen/button_padding"
-            android:src="@drawable/nav_protein_icon"
             android:layout_weight="1"/>
 
         <ImageView
@@ -46,7 +44,6 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:padding="@dimen/button_padding"
-            android:src="@drawable/nav_toothbrush_icon"
             android:layout_weight="1"/>
 
         <ImageView
@@ -54,7 +51,6 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:padding="@dimen/button_padding"
-            android:src="@drawable/nav_quote_icon"
             android:layout_weight="1"/>
 
     </LinearLayout>

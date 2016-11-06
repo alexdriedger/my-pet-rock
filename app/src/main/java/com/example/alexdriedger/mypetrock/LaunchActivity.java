@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -28,11 +29,14 @@ public class LaunchActivity extends AppCompatActivity {
 
         ImageView mainImage = (ImageView) findViewById(R.id.launch_image_view);
         ImageView backgroundImage = (ImageView) findViewById(R.id.launch_background);
+        RelativeLayout waterCanButton = (RelativeLayout) findViewById(R.id.water_can_button);
+        ImageView waterCanImage = (ImageView) findViewById(R.id.water_can_image);
 
         Glide.with(this).load(R.drawable.background_basic).into(backgroundImage);
         Glide.with(this).load(R.drawable.stage1_rock_img).into(mainImage);
+        Glide.with(this).load(R.drawable.nav_water_icon).into(waterCanImage);
 
-        mainImage.setOnClickListener(new View.OnClickListener() {
+        waterCanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mRockClicks < 2) {
