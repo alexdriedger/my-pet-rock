@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         Glide.with(mainImage.getContext()).load(R.drawable.nav_dumbbell_icon_yellow).into(bActionWorkout);
         Glide.with(mainImage.getContext()).load(R.drawable.nav_protein_icon_yellow).into(bActionEat);
         Glide.with(mainImage.getContext()).load(R.drawable.nav_toothbrush_icon_yellow).into(bActionToothBrush);
-        Glide.with(mainImage.getContext()).load(R.drawable.nav_quote_icon_yellow).into(bActionQuote);
+        Glide.with(mainImage.getContext()).load(R.drawable.nav_money_icon).into(bActionQuote);
 
         Bundle extras = getIntent().getExtras();
 
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                     // Start Gif Activity
                     Intent gifIntent = new Intent(MainActivity.this, GifActivity.class);
                     gifIntent.putExtra("GIF_TO_PLAY", "animation_lifting");
-                    gifIntent.putExtra("GIF_LENGTH", 4000);
+                    gifIntent.putExtra("GIF_LENGTH", 7100);
                     gifIntent.putExtra("hasCreatine", hasCreatine);
                     gifIntent.putExtra("muscleCount", muscleCount);
                     gifIntent.putExtra("moneyCount", moneyCount);
@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                     // Start Gif Activity
                     Intent gifIntent = new Intent(MainActivity.this, GifActivity.class);
                     gifIntent.putExtra("GIF_TO_PLAY", "animation_money");
-                    gifIntent.putExtra("GIF_LENGTH", 4000);
+                    gifIntent.putExtra("GIF_LENGTH", 5700);
                     gifIntent.putExtra("hasCreatine", hasCreatine);
                     gifIntent.putExtra("muscleCount", muscleCount);
                     gifIntent.putExtra("moneyCount", moneyCount);
