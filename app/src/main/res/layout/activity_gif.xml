@@ -6,15 +6,11 @@
     android:layout_height="match_parent"
     android:id="@+id/linlay_gif">
 
-    <!--<View-->
-        <!--android:id="@+id/gif_view"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"/>-->
-
-    <!--<com.example.alexdriedger.mypetrock.GIFView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--components:src="@raw/rock_cracking_gif_small" />-->
+    <ImageView
+        android:id="@+id/gif_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"/>
 
 
 </LinearLayout>

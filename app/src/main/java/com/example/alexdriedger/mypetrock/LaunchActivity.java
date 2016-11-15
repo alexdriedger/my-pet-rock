@@ -21,11 +21,13 @@ import static android.media.AudioManager.AUDIOFOCUS_LOSS_TRANSIENT;
 import static android.media.AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK;
 
 /**
- * Created by Alex Driedger on 2016-11-05.
+ * Opening Activity for app. Begins with a pet rock.
+ * Once the rock is watered twice, the rock is sent to {@link GifActivity}
  */
 
 public class LaunchActivity extends AppCompatActivity {
 
+    // Number of times the rock has been watered
     private int mRockClicks;
     private MediaPlayer mMediaPlayer = null;
     private AudioManager mAudioManager;
@@ -62,11 +64,13 @@ public class LaunchActivity extends AppCompatActivity {
         this.setContentView(R.layout.activity_launch);
         mRockClicks = 0;
 
+        // Find Views
         ImageView mainImage = (ImageView) findViewById(R.id.launch_image_view);
         ImageView backgroundImage = (ImageView) findViewById(R.id.launch_background);
         RelativeLayout waterCanButton = (RelativeLayout) findViewById(R.id.water_can_button);
         ImageView waterCanImage = (ImageView) findViewById(R.id.water_can_image);
 
+        // Load images
         Glide.with(this).load(R.drawable.background_basic).into(backgroundImage);
         Glide.with(this).load(R.drawable.state_opening_rock).into(mainImage);
         Glide.with(this).load(R.drawable.nav_water_icon).into(waterCanImage);
@@ -105,7 +109,7 @@ public class LaunchActivity extends AppCompatActivity {
                 else {
                     Intent gifIntent = new Intent(LaunchActivity.this, GifActivity.class);
                     gifIntent.putExtra("GIF_TO_PLAY", "rock_cracking_gif_small");
-                    gifIntent.putExtra("GIF_LENGTH", 10000);
+                    gifIntent.putExtra("GIF_LENGTH", 8000);
                     startActivity(gifIntent);
                 }
             }

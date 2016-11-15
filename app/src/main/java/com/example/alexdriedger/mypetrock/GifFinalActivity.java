@@ -93,7 +93,7 @@ public class GifFinalActivity extends AppCompatActivity {
         if (audioFocusResult == AudioManager.AUDIOFOCUS_REQUEST_GRANTED && mMediaPlayer == null) {
             //A Media Player object is created with the Audio Resource Id of the current
             //word
-            mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.one_thousand_miles);
+            mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.animation_finalstage_1);
 
             //Audio starts playing
             mMediaPlayer.start();

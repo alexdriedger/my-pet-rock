@@ -21,6 +21,8 @@ import java.util.TimerTask;
 
 import static android.media.AudioManager.AUDIOFOCUS_LOSS_TRANSIENT;
 import static android.media.AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK;
+import static android.view.KeyCharacterMap.load;
+import static java.security.AccessController.getContext;
 
 /**
  * Used to for displaying Gifs
@@ -61,6 +63,8 @@ public class GifActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         releaseMediaPlayer();
+
+        Glide.clear(findViewById(R.id.gif_view));
     }
 
     @Override
@@ -77,21 +81,25 @@ public class GifActivity extends AppCompatActivity {
         final int gifID = r.getIdentifier(gifResource, "raw", "com.example.alexdriedger.mypetrock");
         final int audioID = r.getIdentifier(audioResource, "raw", "com.example.alexdriedger.mypetrock");
 
-        final LinearLayout parentView = (LinearLayout) findViewById(R.id.linlay_gif);
+//        final LinearLayout parentView = (LinearLayout) findViewById(R.id.linlay_gif);
 
-        final View gifView = new GIFView(getApplicationContext()) {
-            @Override
-            public void initializeView() {
-                super.initializeView();
-                InputStream is = getContext().getResources().openRawResource(gifID);
-                mMovie = Movie.decodeStream(is);
-            }
-        };
-        gifView.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
+        final ImageView gifView = (ImageView) findViewById(R.id.gif_view);
 
-        parentView.addView(gifView);
+        Glide.with(getApplicationContext()).load(gifID).into(gifView);
+
+//        final View gifView = new GIFView(getApplicationContext()) {
+//            @Override
+//            public void initializeView() {
+//                super.initializeView();
+//                InputStream is = getContext().getResources().openRawResource(gifID);
+//                mMovie = Movie.decodeStream(is);
+//            }
+//        };
+//        gifView.setLayoutParams(new LinearLayout.LayoutParams(
+//                LinearLayout.LayoutParams.MATCH_PARENT,
+//                LinearLayout.LayoutParams.MATCH_PARENT));
+//
+//        parentView.addView(gifView);
 
         new CountDownTimer(gifLength, 600) {
 
@@ -100,7 +108,7 @@ public class GifActivity extends AppCompatActivity {
             }
 
             public void onFinish() {
-                parentView.removeView(gifView);
+//                parentView.removeView(gifView);
                 Intent backToMain = new Intent(GifActivity.this, MainActivity.class);
 
                 if(extras.size() == 2) {
